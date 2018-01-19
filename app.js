@@ -21,7 +21,7 @@ function create(env, ctx) {
     app.engine('appcache', require('ejs').renderFile);
     app.set("views", path.join(__dirname, "views/"));
 
-    //app.locals.cachebuster = fs.readFileSync(process.cwd() + '/tmp/cacheBusterToken').toString().trim();
+    app.locals.cachebuster = fs.readFileSync(process.cwd() + '/tmp/cacheBusterToken').toString().trim();
 
     if (ctx.bootErrors && ctx.bootErrors.length > 0) {
         app.get('*', require('./lib/booterror')(ctx));
